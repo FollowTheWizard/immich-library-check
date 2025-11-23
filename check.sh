@@ -33,10 +33,10 @@ docker exec "$postgres_container" psql -U "$postgres_user" -d "$postgres_db" --t
   | tr '|' $'\t' > library.tsv
 
 # normal assets have both "fs" and "db" sources
-normal='^fs.*\tdb\t'
+normal='^fs.*'$'\t'db$'\t'
 grep -v "$normal" library.tsv > library.mismatch.tsv
 
-echo "Files written: 
+echo "Files written:
   library.tsv
   library.mismatch.tsv
 Total assets/files:

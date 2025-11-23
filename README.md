@@ -29,7 +29,7 @@ Motivation for this script:
 3. Run the script, it will create two TSV files `library.tsv` and `library.mismatch.tsv`:
 
 ```sh
-sh check.sh
+bash check.sh
 ```
 
 4. Review the results.
