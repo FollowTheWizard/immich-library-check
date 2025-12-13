@@ -15,7 +15,7 @@ It writes two TSV (tab-separated values) files:
 - `library.mismatch.tsv` - assets that are only on disk (untracked) or only in the database (missing files)
 - `library.tsv` - all assets (both mismatches and normal assets)
 
-Each row has **FS fields** (columns 1–5) and **DB fields** (columns 6–13). A normal asset has non-empty values in both.
+Each row has **FS fields** (columns 1–5) and **DB fields** (columns 6–14). A normal asset has non-empty values in both.
 
 Motivation for this script:
 - "How I can look up untracked files?" on Discord https://discord.com/channels/979116623879368755/1441618274906407054
@@ -26,16 +26,17 @@ Motivation for this script:
 
 2. (Optional) Adjust the variables (`datadir`, etc.) according to your setup.
 
-3. Run the script, it will create two TSV files `library.tsv` and `library.mismatch.tsv`:
+3. Run the script:
 
 ```sh
 bash check.sh
 ```
 
-4. Review the results.
+4. Review the results.  
+Two TSV files `library.tsv` and `library.mismatch.tsv` will be created.  
 Open `library.mismatch.tsv` in your spreadsheet app and check for problems found:
-- Rows with only `fs` source - untracked files
-- Rows with only `db` source - missing files
+    - Rows with only `fs` source - untracked files, present only on disk
+    - Rows with only `db` source - missing files, present only in the database
 
 ## Caveats
 

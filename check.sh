@@ -9,8 +9,9 @@ postgres_user=${POSTGRES_USER:-postgres}
 postgres_db=${POSTGRES_DB:-immich}
 
 sql=$(cat <<'EOF'
-select 'db' as source, 'asset' as type, "originalPath", "fileSizeInByte", "createdAt", "deletedAt", status, visibility
-from asset left join asset_exif on "assetId" = "id" 
+select 'db' as source, 'asset' as type, "originalPath", "fileSizeInByte", "createdAt", "deletedAt", status, visibility, id
+from asset
+left join asset_exif on "assetId" = "id"
 where not "isExternal"
 EOF
 )
@@ -22,8 +23,8 @@ find "$datadir/upload"  -type f -not -iname ".immich" -not -iname "*.xmp" -exec 
 EOF
 )
 cmd=$(cat <<EOF
-echo "source|type|path|size|ts|source|type|path|size|ts|del_ts|status|visibility"
-join -j3 -t '|' -a1 -a2 -o 1.1,1.2,1.3,1.4,1.5,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8 \
+echo "source|type|path|size|ts|source|type|path|size|ts|del_ts|status|visibility|id"
+join -j3 -t '|' -a1 -a2 -o 1.1,1.2,1.3,1.4,1.5,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9 \
   <($find_cmd) \
   <(sort -k3,3 -t '|')
 EOF
