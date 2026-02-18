@@ -53,3 +53,16 @@ Track other resources:
 - thumbnails
 - transcoded videos
 - ...
+
+
+## Schritt-für-Schritt Anleitung
+Öffne dein Terminal (SSH auf den Server oder direkt am Rechner).
+
+Variablen setzen: Bevor die Test-Befehle funktionieren, musst du dem Terminal sagen, was $datadir und $postgres_container bedeuten. Kopiere dazu diesen Block und passe den Pfad eventuell an:
+
+Bash
+export datadir="/dein/pfad/zu/immich/library"  # Hier den echten Pfad eintragen
+export postgres_container="immich_postgres"
+export postgres_user="postgres"
+export postgres_db="immich"
+Die Test-Befehle kopieren: Jetzt kannst du die beiden Befehle von oben einfach nacheinander reinkopieren und Enter drücken.
